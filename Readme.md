@@ -19,5 +19,5 @@ vim conf.json
 - 运行
 
 ```
-sh datax.sh run
+sh datax.sh run conf.json
 ```
