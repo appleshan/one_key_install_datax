@@ -8,7 +8,9 @@ function install {
 }
 
 function run {
-   echo "run datax ..." 
+   echo "run datax ..."
+   cd data/bin
+   python datax.py ../../$2
 }
 
 $1 $2
