@@ -1,0 +1,56 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "otsreader",    
+                    "parameter": {
+                        "endpoint":"http://******.cn-hangzhou.ots-internal.aliyuncs.com",
+                        "accessId":"*********",
+                        "accessKey":"*********",
+                        "instanceName":"******",
+                        "table":"******",
+                        "column" : [
+                            {"name":"eid"},
+                            {"name":"uid"},
+                            {"name":"ip"},
+                            {"name":"time"},
+                            {"name":"user_location"}
+                        ],
+                       "range": {
+                            "begin":[{"type":"INF_MIN"},{"type":"INF_MIN"},{"type":"INF_MIN"}],
+                            "end":[{"type":"INF_MAX"},{"type":"INF_MAX"},{"type":"INF_MAX"}],
+                           "split":[{"type": "INT","value": "100"},{"type": "INT","value": "200"}]      
+                       }
+                    }
+                },
+               "writer": {
+                    "name": "odpswriter",
+                    "parameter": {
+                        "project": "**********",
+                        "table": "ods_user_interface_log",
+                        "accessId": "********",
+                        "accessKey": "********",
+                        "partition":"",
+                        "column": [
+                            "eid",
+                            "uid",
+                            "ip",
+                            "time",
+                            "user_location"
+                        ],
+                        "truncate": true,
+                        "odpsServer": "http://service.odps.aliyun-inc.com/api",
+                        "tunnelServer": "http://dt-corp.odps.aliyun-inc.com",
+                        "accountType": "aliyun"
+                    }
+                }
+            }
+        ]
+    }
+}
